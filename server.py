@@ -54,7 +54,8 @@ class ClientThread(Thread):
         print " New thread started for "+ip+":"+str(port)
 
     def run(self):
-        filename = 'mytext.txt'
+        filename = 'testing.js'
+        # filename = 'mytext.txt'     # file received
         f = open(filename, 'rb')
         while True:
             l = f.read(BUFFER_SIZE)

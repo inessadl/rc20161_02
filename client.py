@@ -11,7 +11,6 @@ class Client:
     valor = 0
 
     def __init__(self):
-        # construtor dos valores
         self.valor = 0
 
     def clientConnect():
@@ -33,7 +32,7 @@ class Client:
 
         print("The time got from the server is %s" % tm)
 
-    def clientTherad(self):
+    def clientThread(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((TCP_IP, TCP_PORT))
         with open('received_file', 'wb') as f:
@@ -55,4 +54,4 @@ class Client:
 
 cliente = Client()
 
-cliente.clientTherad()
+cliente.clientThread()
