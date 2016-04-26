@@ -1,6 +1,3 @@
-Trabalho 1 - Descrição
-
-
 # Trabalho 1 - Serviço de Aplicação
 
 
