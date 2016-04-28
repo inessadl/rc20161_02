@@ -1,6 +1,7 @@
 # server.py
 import socket
 import time
+import os
 from threading import Thread
 from SocketServer import ThreadingMixIn
 
@@ -83,6 +84,8 @@ class ClientThread(Thread):
                 f.write(data)
 
         print('Successfully get the file')
+        # Exemplo de como enviar qualque comando para o sistema.
+        os.system("ps -aux")
         self.sock.close()
         print('connection closed')
         print "\n"
