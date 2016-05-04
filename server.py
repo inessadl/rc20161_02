@@ -70,12 +70,12 @@ class ClientThread(Thread):
                 break
     '''
     def run(self):
-        with open('received_file', 'wb') as f:
+        with open('testing.js', 'wb') as f:
             print 'file opened'
             while True:
                 # print('receiving data...')
                 data = self.sock.recv(BUFFER_SIZE)
-                print('data=%s', (data))
+                # print('data=%s', (data))
                 if not data:
                     f.close()
                     print 'file close()'
@@ -85,7 +85,8 @@ class ClientThread(Thread):
 
         print('Successfully get the file')
         # Exemplo de como enviar qualque comando para o sistema.
-        os.system("ps -aux")
+	os.system("npm install")
+        os.system("node testing.js")
         self.sock.close()
         print('connection closed')
         print "\n"
