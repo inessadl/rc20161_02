@@ -12,6 +12,7 @@ BUFFER_SIZE = 1024
 class Server:
     valor = 0
 
+    # precisa disso? o construtor não está fazendo nada.... 
     def __init__(self):
         # construtor dos valores
         self.valor
