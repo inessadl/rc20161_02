@@ -57,18 +57,24 @@ print ("Iniciando Cliente")
 print ("\n")
 
 cliente = Client()
-var = 0
+quit = 0     # variável auxiliar para controlar as repetições
 
-while var != 1:
-    print("Digite um dos comandos abaixo:")
-    print("user  |  send  |  run  |  quit\n")
-    # print("Use um dos comandos disponíveis:")
-    # print ("USER")
-    # print ("SEND")
-    # print ("RUN")
-    # print ("QUIT")
+# Menus para avaliar os comandos executados pelo usuário.
+
+# Menu geral:
+while quit != 1:
+    print ("====================================")
+    print ("Digite uma das instruções abaixo:")
+    print ("USER - user myfile.json")
+    print ("SEND - send myfile.js")
+    print ("RUN - run")
+    print ("QUIT - quit")
+    print ("====================================")
+    print ("")
 
     entrada = input("Digite a função desejada: ")
+
+    # TODO autenticar usuário
 
     # Analisa os 5 primeiros caracteres e confere se o que foi digitado
     # pelo usuário corresponde aos comandos aceitos.
@@ -81,18 +87,17 @@ while var != 1:
             # servidor deve estar escutando função tipo recv()
             # sendto(string, address)
         else:
-            print("")
-            # print("Arquivo de entrada invalido!")
-    elif entrada == "send":
+            print("[ERRO 303] - Arquivo em formato inválido.")
+    elif entrada == "send": # verificar extensão
         print ("SEND")
         cliente.clientThread()
     elif entrada == "run":
-        print ("RUN")
+        print ("Trying to run application...")
     elif entrada == "quit":
         print ("Fechando cliente!")
-        var = 1
+        quit = 1
     else:
-        print ("Comando desconhecido")
+        print ("Comando inválido")
 
 
 '''    def clientThread(self):
