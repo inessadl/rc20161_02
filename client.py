@@ -1,5 +1,7 @@
 # client.py
 # !/usr/bin/env python
+#!-*- conding: utf8 -*-
+
 import socket
 import json
 
@@ -13,6 +15,7 @@ class Client:
 
     def __init__(self):
         self.valor = 0
+        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def clientConnect():
         # create a socket object
@@ -53,11 +56,37 @@ class Client:
                 print('connection closed')
                 break
 
+    def clientThreadConnect(self):
+        # s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.s.connect((TCP_IP, TCP_PORT))
+
+    def clientThreadCloseConection(self):
+        self.s.close()
+
+    def clientThreadSendArquive(self, filename):
+        # print (filename)
+        f = open(filename, 'rb')
+        print('sending data...')
+        while True:
+            l = f.read(BUFFER_SIZE)
+            while (l):
+                self.s.send(l)
+                # print('Sent ',repr(l))
+                l = f.read(BUFFER_SIZE)
+            if not l:
+                f.close()
+                print('Successfully put the file')
+                break
+
 print ("Iniciando Cliente")
 print ("\n")
 
 cliente = Client()
+cliente.clientThreadConnect()
+cliente.clientThreadSendArquive("testing.js")
+cliente.clientThreadCloseConection() # quit
 quit = 0     # variável auxiliar para controlar as repetições
+
 
 # Menus para avaliar os comandos executados pelo usuário.
 
@@ -82,13 +111,15 @@ while quit != 1:
         # Verifica se o arquivo de entrada possui a extensão json
         if entrada[len(entrada)-5:] == ".json":
             print ("Logando no servidor...")
+
             # print("return 100")
             # Receber o retorno do servidor em forma de um int o str aqui
             # servidor deve estar escutando função tipo recv()
             # sendto(string, address)
         else:
             print("[ERRO 303] - Arquivo em formato inválido.")
-    elif entrada == "send": # verificar extensão
+    elif entrada == "send":
+        # verificar extensão
         print ("SEND")
         cliente.clientThread()
     elif entrada == "run":

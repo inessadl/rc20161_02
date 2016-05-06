@@ -1,4 +1,5 @@
 # server.py
+#!-*- conding: utf8 -*-
 import socket
 import time
 import os
