@@ -55,32 +55,40 @@ class Client:
 
 print ("Iniciando Cliente")
 print ("\n")
+
 cliente = Client()
 var = 0
+
 while var != 1:
-    print("Use um dos comandos disponíveis")
-    print ("USER")
-    print ("SEND")
-    print ("RUN")
-    print ("QUIT")
+    print("Digite um dos comandos abaixo:")
+    print("user  |  send  |  run  |  quit\n")
+    # print("Use um dos comandos disponíveis:")
+    # print ("USER")
+    # print ("SEND")
+    # print ("RUN")
+    # print ("QUIT")
 
-    entrada = input("Digite a função desejada:")
+    entrada = input("Digite a função desejada: ")
 
-    if entrada[:5] == "USER ":
-        # confere para ver se o arquivo de entrada é um json
+    # Analisa os 5 primeiros caracteres e confere se o que foi digitado
+    # pelo usuário corresponde aos comandos aceitos.
+    if entrada[:5] == "user ":
+        # Verifica se o arquivo de entrada possui a extensão json
         if entrada[len(entrada)-5:] == ".json":
             print ("Logando no servidor...")
+            # print("return 100")
             # Receber o retorno do servidor em forma de um int o str aqui
             # servidor deve estar escutando função tipo recv()
             # sendto(string, address)
         else:
-            print("Arquivo de entrada invalido!")
-    elif entrada == "SEND":
+            print("")
+            # print("Arquivo de entrada invalido!")
+    elif entrada == "send":
         print ("SEND")
         cliente.clientThread()
-    elif entrada == "RUN":
+    elif entrada == "run":
         print ("RUN")
-    elif entrada == "QUIT":
+    elif entrada == "quit":
         print ("Fechando cliente!")
         var = 1
     else:
