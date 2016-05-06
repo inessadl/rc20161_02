@@ -1,6 +1,7 @@
 # client.py
 # !/usr/bin/env python
 import socket
+import json
 
 TCP_IP = 'localhost'
 TCP_PORT = 30000
@@ -52,9 +53,39 @@ class Client:
                 print('connection closed')
                 break
 
-print "cliente"
+print ("Iniciando Cliente")
+print ("\n")
 cliente = Client()
-cliente.clientThread()
+var = 0
+while var != 1:
+    print("Use um dos comandos disponíveis")
+    print ("USER")
+    print ("SEND")
+    print ("RUN")
+    print ("QUIT")
+
+    entrada = input("Digite a função desejada:")
+
+    if entrada[:5] == "USER ":
+        # confere para ver se o arquivo de entrada é um json
+        if entrada[len(entrada)-5:] == ".json":
+            print ("Logando no servidor...")
+            # Receber o retorno do servidor em forma de um int o str aqui
+            # servidor deve estar escutando função tipo recv()
+            # sendto(string, address)
+        else:
+            print("Arquivo de entrada invalido!")
+    elif entrada == "SEND":
+        print ("SEND")
+        cliente.clientThread()
+    elif entrada == "RUN":
+        print ("RUN")
+    elif entrada == "QUIT":
+        print ("Fechando cliente!")
+        var = 1
+    else:
+        print ("Comando desconhecido")
+
 
 '''    def clientThread(self):
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -2,17 +2,19 @@
 import socket
 import time
 import os
+import json
 from threading import Thread
-from SocketServer import ThreadingMixIn
+# from SocketServer import ThreadingMixIn
 
 TCP_IP = 'localhost'
 TCP_PORT = 30000
 BUFFER_SIZE = 1024
 
+
 class Server:
     valor = 0
 
-    # precisa disso? o construtor não está fazendo nada.... 
+    # precisa disso? o construtor não está fazendo nada....
     def __init__(self):
         # construtor dos valores
         self.valor
@@ -53,7 +55,7 @@ class ClientThread(Thread):
         self.ip = ip
         self.port = port
         self.sock = sock
-        print " New thread started for "+ip+":"+str(port)
+        print (" New thread started for "+ip+":"+str(port))
 
     '''def run(self):
         filename = 'testing.js'
@@ -72,25 +74,25 @@ class ClientThread(Thread):
     '''
     def run(self):
         with open('testing.js', 'wb') as f:
-            print 'file opened'
+            print ('file opened')
             while True:
                 # print('receiving data...')
                 data = self.sock.recv(BUFFER_SIZE)
                 # print('data=%s', (data))
                 if not data:
                     f.close()
-                    print 'file close()'
+                    print ('file close()')
                     break
                 # write data to a file
                 f.write(data)
 
         print('Successfully get the file')
         # Exemplo de como enviar qualque comando para o sistema.
-	os.system("npm install")
+        # os.system("npm install")
         os.system("node testing.js")
         self.sock.close()
         print('connection closed')
-        print "\n"
+        print ("\n")
 
 
 tcpsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -100,10 +102,10 @@ threads = []
 
 while True:
     tcpsock.listen(5)
-    print "Waiting for incoming connections..."
+    print ("Waiting for incoming connections...")
     # (conn, (ip, port)) = tcpsock.accept()
     conn, addr = tcpsock.accept()
-    print 'Got connection from ', (TCP_IP, TCP_PORT)
+    print ('Got connection from ', (TCP_IP, TCP_PORT))
     newthread = ClientThread(TCP_IP, addr, conn)
     newthread.start()
     threads.append(newthread)
