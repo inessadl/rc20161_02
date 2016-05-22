@@ -1,11 +1,10 @@
-## Redes de Computadores - 2016/1
+# rc20161_02
 
-Este repositório contém os trabalhos da disciplina de Redes de Computadores, do curso
-de Ciência da Computação da Universidade Federal de Pelotas
+Este repositório contém os trabalhos da disciplina de Redes de Computadores - 2016/1
+do curso de Ciência da Computação da Universidade Federal de Pelotas.
 
 
-### Referências:
+### Desenvolvedores
 
-https://gist.github.com/tedmiston/5935757
-
-http://www.hacksparrow.com/tcp-socket-programming-in-node-js.html
+- André Alba - [@Deh-alba](https://github.com/Deh-alba)
+- Inessa Luerce - [@inessadl](https://github.com/inessadl)
